@@ -1,0 +1,22 @@
+{
+    "env": {
+        "node": true,
+        "mocha": true
+    },
+    "rules": {
+        "indent": 0,
+        "semi": "warn",
+        "space-before-function-paren": "off",
+        "padded-blocks": "off",
+        "no-multiple-empty-lines": "off",
+        "eol-last": "off",
+        "new-cap": "warn",
+        "no-trailing-spaces": "off",
+        "curly": "off",
+        "quotes": "off",
+        "camelcase": "off",
+        "space-in-parens": "warn",
+        "operator-linebreak": "off"
+    },
+    "extends": "standard"
+}
