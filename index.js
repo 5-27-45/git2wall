@@ -6,8 +6,6 @@ const Utils = require('./utils')
 const chalk = require('chalk')
 const { trackEvent } = require('./utils')
 
-require('dotenv').config()
-
 process.on('SIGINT', () => { trackEvent('user_exit'); process.exit(0) })
 
 const main = async () => {

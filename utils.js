@@ -43,7 +43,7 @@ const printError = (error) => console.log(chalk.red.bold(error))
 
 const trackEvent = (event, data) => {
 
-    const NODE_ENV = process.env.NODE_ENV
+    const NODE_ENV = process.env.NODE_ENV || 'prod'
 
     const eventFullName = `${NODE_ENV}:${event}`
 
