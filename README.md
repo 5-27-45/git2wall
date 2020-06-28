@@ -40,5 +40,6 @@ $ npx git2wall
 
 ![Ambient 2](https://firebasestorage.googleapis.com/v0/b/git2wall.appspot.com/o/public%2FOnlyFrames2%20zoom.jpg?alt=media&token=9b324f20-ecd6-4cc0-b6ff-74c2ec61f424)
 
-### N.B. 
+### N.B.
+
 The cli is still in an early development stage and may be incomplete or buggy at time of use.
