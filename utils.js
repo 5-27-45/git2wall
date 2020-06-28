@@ -8,7 +8,7 @@ const clear = require('clear')
 const path = require('path')
 const { v4: uuidv4 } = require('uuid')
 // const chalkRainbow = require('chalk-rainbow')
-const analytics = new Analytics('PlK0f8GUkINbFgSoXdQSjdKdhi9Hkdqr')
+const analytics = new Analytics('PlK0f8GUkINbFgSoXdQSjdKdhi9Hkdqr', { flushAt: 1 })
 const uuid = uuidv4()
 
 const clean = () => {
