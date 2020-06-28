@@ -5,7 +5,7 @@ const { prompt } = inquirer
 
 const askForProjectType = async () => {
 
-    Utils.trackEvent('question_project_type')
+    await Utils.trackEvent('question_project_type')
 
     const { projectType } = await prompt([
         {
@@ -25,7 +25,7 @@ const askForProjectType = async () => {
         }
     ])
 
-    Utils.trackEvent('question_project_type_answer', projectType)
+    await Utils.trackEvent('question_project_type_answer', projectType)
 
     return projectType
 
@@ -33,7 +33,7 @@ const askForProjectType = async () => {
 
 const askForFamousProjectName = async () => {
 
-    Utils.trackEvent('question_famous_project_name')
+    await Utils.trackEvent('question_famous_project_name')
 
     const { projectName, repoURL } = await prompt([
         {
@@ -56,7 +56,7 @@ const askForFamousProjectName = async () => {
 
     ])
 
-    Utils.trackEvent('question_famous_project_name_answer', repoURL || projectName)
+    await Utils.trackEvent('question_famous_project_name_answer', repoURL || projectName)
 
     return repoURL || projectName
 
@@ -64,7 +64,7 @@ const askForFamousProjectName = async () => {
 
 const askForProjectImportance = async () => {
 
-    Utils.trackEvent('question_dimention')
+    await Utils.trackEvent('question_dimention')
 
     const { size } = await prompt([
         {
@@ -88,7 +88,7 @@ const askForProjectImportance = async () => {
         }
     ])
 
-    Utils.trackEvent('question_dimention_answer', size)
+    await Utils.trackEvent('question_dimention_answer', size)
 
     return size
 
@@ -96,7 +96,7 @@ const askForProjectImportance = async () => {
 
 const askForPersonalPrintOrNot = async () => {
 
-    Utils.trackEvent('question_scope')
+    await Utils.trackEvent('question_scope')
 
     const { scope } = await prompt([
         {
@@ -116,7 +116,7 @@ const askForPersonalPrintOrNot = async () => {
         }
     ])
 
-    Utils.trackEvent('question_scope_answer', scope)
+    await Utils.trackEvent('question_scope_answer', scope)
 
     return scope
 
@@ -124,7 +124,7 @@ const askForPersonalPrintOrNot = async () => {
 
 const askForCopiesNumber = async () => {
 
-    Utils.trackEvent('question_copies_number')
+    await Utils.trackEvent('question_copies_number')
 
     const { copies } = await prompt([
         {
@@ -138,7 +138,7 @@ const askForCopiesNumber = async () => {
         }
     ])
 
-    Utils.trackEvent('question_copies_number_answer', copies)
+    await Utils.trackEvent('question_copies_number_answer', copies)
 
     return copies
 

@@ -41,20 +41,24 @@ const currentDirName = () => path.basename(process.cwd())
 const printError = (error) => console.log(chalk.red.bold(error))
 
 
-const trackEvent = (event, data) => {
+const trackEvent = async (event, data) =>
+    new Promise((resolve, reject) => {
 
-    const NODE_ENV = process.env.NODE_ENV || 'prod'
+        const NODE_ENV = process.env.NODE_ENV || 'prod'
 
-    const eventFullName = `${NODE_ENV}:${event}`
+        const eventFullName = `${NODE_ENV}:${event}`
 
-    analytics.track({ event: eventFullName, anonymousId: uuid, properties: { data } })
+        analytics.track({ event: eventFullName, anonymousId: uuid, properties: { data } }, (e, data) => {
+            // if (e) // There was an error sending message...
+            resolve()
+        })
 
-    if (NODE_ENV !== 'prod') {
-        const log = chalk.gray.italic(eventFullName)
-        if (data) console.log(log, data); else console.log(log)
-    }
+        if (NODE_ENV !== 'prod') {
+            const log = chalk.gray.italic(eventFullName)
+            if (data) console.log(log, data); else console.log(log)
+        }
 
-}
+    })
 
 
 const keypress = () => {
@@ -69,19 +73,21 @@ const keypress = () => {
 }
 
 
-const workInProgressMessage = () => {
+const workInProgressMessage = async () => {
 
     clear()
+
+    const code = Math.round(Math.random() * 100000)
 
     console.log(chalk.bold.red(figlet.textSync('Are you the chosen?', { horizontalLayout: 'default' })))
 
     console.log(chalk.italic("If you are seeing this message, it's because you somehow got access to the cli before the actual development is finished."))
 
-    console.log(`Follow this link ${chalk.italic.blue('http://eepurl.com/g8qrS5')}, enter your email an the code ${chalk.bold.green(Math.round(Math.random() * 100000))}. You will receive a free canvas once the development is finished.`)
+    console.log(`Follow this link ${chalk.italic.blue('http://eepurl.com/g8qrS5')}, enter your email an the code ${chalk.bold.green(code)}. You will receive a free canvas once the development is finished.`)
 
     console.log(' ')
 
-    trackEvent('end', new Date().toISOString())
+    await trackEvent('end', code)
 
     process.exit(0)
 

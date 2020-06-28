@@ -6,11 +6,11 @@ const Utils = require('./utils')
 const chalk = require('chalk')
 const { trackEvent } = require('./utils')
 
-process.on('SIGINT', () => { trackEvent('user_exit'); process.exit(0) })
+process.on('SIGINT', async () => { await trackEvent('user_exit'); process.exit(0) })
 
 const main = async () => {
 
-    Utils.trackEvent('start', new Date().toISOString())
+    await Utils.trackEvent('start', new Date().toISOString())
 
     Utils.clean()
 
@@ -19,11 +19,11 @@ const main = async () => {
     console.log(`In just few steps you'll ${chalk.bold('preview')} and ${chalk.bold('ship')} your beautiful git repo history on a canvas.
     `)
     console.log(chalk.gray.italic('Press enter to continue'))
-    Utils.trackEvent('show_intro')
+    await Utils.trackEvent('show_intro')
 
     // await input before continuing
     await Utils.keypress()
-    Utils.trackEvent('start_questions')
+    await Utils.trackEvent('start_questions')
 
     Utils.clean()
 
@@ -33,7 +33,7 @@ const main = async () => {
         // if we are not in a git repo, throw error and exit.
         if (!await Utils.isGitRepo()) {
 
-            Utils.trackEvent('not_in_git_repo')
+            await Utils.trackEvent('not_in_git_repo')
 
             Utils.printError('This folder is a git repo 😩 Place yourself into a git repo and try again')
 
@@ -41,7 +41,7 @@ const main = async () => {
 
         }
 
-        Utils.trackEvent('in_git_repo')
+        await Utils.trackEvent('in_git_repo')
 
     } else {
 
@@ -55,7 +55,7 @@ const main = async () => {
 
     await Questions.askForCopiesNumber()
 
-    Utils.workInProgressMessage()
+    await Utils.workInProgressMessage()
 
 }
 
