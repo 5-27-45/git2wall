@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/5-27-45/git2wall/compare/v1.1.0...v1.1.1) (2020-06-28)
+
+
+### Bug Fixes
+
+* **analytics:** flush every messaage ([8784fde](https://github.com/5-27-45/git2wall/commit/8784fdeef972307266afc075dc53739910f714bf))
+
 ## 1.1.0 (2020-06-28)
 
 
